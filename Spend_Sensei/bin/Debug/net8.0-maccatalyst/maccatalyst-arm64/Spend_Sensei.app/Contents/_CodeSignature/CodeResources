@@ -14,7 +14,7 @@
 		</data>
 		<key>Resources/MauiInfo.plist</key>
 		<data>
-		A/74dbGgxu/fUONI00Bycn7+qco=
+		taOyNoSo2BIrzowD7xOd7/IHKc8=
 		</data>
 		<key>Resources/MonoTouchDebugConfiguration.txt</key>
 		<data>
@@ -42,11 +42,11 @@
 		</data>
 		<key>Resources/wwwroot/Spend_Sensei.bundle.scp.css</key>
 		<data>
-		ZOgyf0Qy5Y4elO9Pwux+C7klBIw=
+		yOY/585eaHwW8b1bVwJPEqWwpFg=
 		</data>
 		<key>Resources/wwwroot/Spend_Sensei.styles.css</key>
 		<data>
-		ZOgyf0Qy5Y4elO9Pwux+C7klBIw=
+		yOY/585eaHwW8b1bVwJPEqWwpFg=
 		</data>
 		<key>Resources/wwwroot/_content/MudBlazor/MudBlazor.min.css</key>
 		<data>
@@ -370,14 +370,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hEqrWrSf1Ad2zbDPPV6zhZviMphX8K79bIjeVqob4ZQ=
+			xUSXaJhuMkwo5XN5cT3a0dp6nGaeLGcSQBspIOlfRJQ=
 			</data>
 		</dict>
 		<key>MonoBundle/Spend_Sensei.pdb</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			MhBPyJoVX/u4D73EKx1HIUL+NKYmusgCU1OxVX5pJwA=
+			e+P2YD4illDs0awdj/B7Ou36Ouzo9hwTtn79liRcLkM=
 			</data>
 		</dict>
 		<key>MonoBundle/System.AppContext.dll</key>
@@ -1812,7 +1812,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UEORARmYMQB21vcObyk2tL7rhjGOSCGHQz3UGRUssW0=
+			4sJYIrDjcyKdZrWnkcITBpUlk2wBstJbyN8sH83H/SA=
 			</data>
 		</dict>
 		<key>Resources/MonoTouchDebugConfiguration.txt</key>
@@ -1861,14 +1861,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UKgSUt/QynMYuUkFFVvqbyWizr41i8sGrYsDQMYcuPk=
+			NOeAaUesXnVslE395hZH+bF+oE8oaPMaDFAVSzBo/fY=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/Spend_Sensei.styles.css</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			UKgSUt/QynMYuUkFFVvqbyWizr41i8sGrYsDQMYcuPk=
+			NOeAaUesXnVslE395hZH+bF+oE8oaPMaDFAVSzBo/fY=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/_content/MudBlazor/MudBlazor.min.css</key>

@@ -23,7 +23,7 @@
     <!-- Amount -->
     <div>
         <label>Amount:</label>
-        <input type="number" @bind="newTransaction.Amount" class="form-control" />
+        <input type="number" @bind="newTransaction.Amount" class="form-control" min="0" />
     </div>
     @if (!string.IsNullOrEmpty(errorMessageAmount))
     {
@@ -51,25 +51,39 @@
         }
     </div>
 
-    <button @onclick="ValidateAndAddTransaction" class="btn btn-primary">Add Transaction</button>
+    <button type="button" @onclick="ValidateAndAddTransaction" class="btn btn-primary">Add Transaction</button>
 </form>
 
-@if (!string.IsNullOrEmpty(errorMessage))
+@if (!string.IsNullOrEmpty(successMessage))
 {
-    <p class="success-message">@errorMessage</p>
+    <div class="alert alert-success">@successMessage</div>
+}
+
+<!-- Popup Modal for Insufficient Balance -->
+@if (ShowInsufficientBalancePopup)
+{
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <h2>⚠ Insufficient Balance</h2>
+            <p>You don't have enough balance to complete this transaction.</p>
+            <button class="close-btn" @onclick="ClosePopup">OK</button>
+        </div>
+    </div>
 }
 
 @code {
-    private Transaction newTransaction = new Transaction();
-    private string errorMessage = "";
+    private Transaction newTransaction = new Transaction { Date = DateTime.Now };
+    private string successMessage = "";
     private string errorMessageType = "";
     private string errorMessageAmount = "";
     private string selectedTag = "Food"; // Default to the first predefined tag
     private string customTag = "";
 
+    private bool ShowInsufficientBalancePopup = false; // Flag for modal visibility
+
     private void ValidateAndAddTransaction()
     {
-        errorMessage = "";
+        successMessage = "";
         errorMessageType = "";
         errorMessageAmount = "";
 
@@ -77,27 +91,42 @@
         if (string.IsNullOrEmpty(newTransaction.Type))
         {
             errorMessageType = "Please select a transaction type.";
+            return;
         }
 
         // Validate Amount
         if (newTransaction.Amount <= 0)
         {
             errorMessageAmount = "Amount must be greater than zero.";
+            return;
         }
 
-        if (string.IsNullOrEmpty(errorMessageType) && string.IsNullOrEmpty(errorMessageAmount))
+        // Set the final tag
+        newTransaction.Tags = selectedTag == "Others" && !string.IsNullOrEmpty(customTag) ? customTag : selectedTag;
+
+        // Check balance before allowing outflow
+        if (newTransaction.Type == "Outflow")
         {
-            // Set the final tag
-            newTransaction.Tags = selectedTag == "Others" && !string.IsNullOrEmpty(customTag) ? customTag : selectedTag;
-
-            // Add the transaction
-            TransactionService.AddTransaction(newTransaction);
-
-            // Reset the form
-            newTransaction = new Transaction();
-            selectedTag = "Food";
-            customTag = "";
-            errorMessage = "Transaction added successfully!";
+            decimal availableBalance = TransactionService.GetBalance();
+            if (newTransaction.Amount > availableBalance)
+            {
+                ShowInsufficientBalancePopup = true;
+                return;
+            }
         }
+
+        // Add the transaction
+        TransactionService.AddTransaction(newTransaction);
+
+        // Reset the form
+        newTransaction = new Transaction { Date = DateTime.Now };
+        selectedTag = "Food";
+        customTag = "";
+        successMessage = "Transaction added successfully!";
+    }
+
+    private void ClosePopup()
+    {
+        ShowInsufficientBalancePopup = false;
     }
 }

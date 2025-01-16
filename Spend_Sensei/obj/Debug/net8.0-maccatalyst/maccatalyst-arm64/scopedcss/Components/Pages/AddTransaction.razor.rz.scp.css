@@ -98,3 +98,56 @@ h1[b-plaxvnp44t] {
         width: 100%;
     }
 }
+
+/* Insufficient Balance Popup */
+.insufficient-balance-popup[b-plaxvnp44t] {
+    text-align: center;
+    color: #d9534f; /* Bootstrap Danger Red */
+    font-weight: bold;
+    padding: 15px;
+    border: 2px solid #d9534f;
+    border-radius: 8px;
+    background: #f8d7da; /* Light Red Background */
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+/* Modal Overlay */
+.modal-overlay[b-plaxvnp44t] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+.modal-content[b-plaxvnp44t] {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+}
+
+/* Close Button */
+.close-btn[b-plaxvnp44t] {
+    background: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.close-btn:hover[b-plaxvnp44t] {
+    background: #c0392b;
+}
+
