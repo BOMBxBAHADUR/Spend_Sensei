@@ -1,0 +1,110 @@
+/* Center the Dashboard Heading */
+h1[b-l5oaef6njp] {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+/* Transactions Page Styling */
+h1[b-l5oaef6njp] {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+/* Filter Section */
+.filter-section[b-l5oaef6njp] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    justify-content: space-between;
+}
+
+.filter-section div[b-l5oaef6njp] {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 250px;
+}
+
+/* Form Controls */
+.form-control[b-l5oaef6njp] {
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border 0.2s ease-in-out;
+}
+
+.form-control:focus[b-l5oaef6njp] {
+    border: 1px solid #2980b9;
+    outline: none;
+}
+
+/* Transactions Table */
+.transactions-table[b-l5oaef6njp] {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.transactions-table th[b-l5oaef6njp],
+.transactions-table td[b-l5oaef6njp] {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.transactions-table th[b-l5oaef6njp] {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+.transactions-table tr:hover[b-l5oaef6njp] {
+    background-color: #f2f2f2;
+}
+
+/* Empty State Styling */
+.transactions-table tbody tr td[colspan='4'][b-l5oaef6njp] {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 15px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .filter-section[b-l5oaef6njp] {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filter-section div[b-l5oaef6njp] {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .transactions-table th[b-l5oaef6njp],
+    .transactions-table td[b-l5oaef6njp] {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .form-control[b-l5oaef6njp] {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,100 @@
+/* Center the Heading */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-weight: bold; 
+}
+
+/* Transaction Form */
+.transaction-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 400px;
+    margin: 0 auto;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Labels */
+.transaction-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Form Controls */
+.form-control {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border 0.2s ease-in-out;
+    width: 100%;
+}
+
+.form-control:focus {
+    border: 1px solid #3498db;
+    outline: none;
+}
+
+/* Add extra spacing between "Others" and Custom Tag input */
+.transaction-form select {
+    margin-bottom: 10px;
+}
+
+.transaction-form input[type="text"] {
+    margin-top: 10px;
+}
+
+/* Error Message */
+.error-message {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: -10px;
+}
+
+/* Success Message */
+.success-message {
+    text-align: center;
+    color: #27ae60;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+/* Button Styling */
+.btn-primary {
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .transaction-form {
+        width: 90%;
+    }
+
+    .form-control {
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+}

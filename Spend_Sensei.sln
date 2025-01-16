@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spend_Sensei", "Spend_Sensei\Spend_Sensei.csproj", "{842A4D4A-7942-47C3-B6A2-A0E4C0759E78}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{842A4D4A-7942-47C3-B6A2-A0E4C0759E78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{842A4D4A-7942-47C3-B6A2-A0E4C0759E78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{842A4D4A-7942-47C3-B6A2-A0E4C0759E78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{842A4D4A-7942-47C3-B6A2-A0E4C0759E78}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

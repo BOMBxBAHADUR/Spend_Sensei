@@ -1,0 +1,134 @@
+/* Center the Dashboard Heading */
+h1[b-76nr2o89ma] {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+/* Page Title */
+.page-title[b-76nr2o89ma] {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Debt Section */
+.debt-section[b-76nr2o89ma] {
+    width: 80%;
+    margin: 20px auto;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Debt Table */
+.debt-table[b-76nr2o89ma] {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.debt-table th[b-76nr2o89ma], .debt-table td[b-76nr2o89ma] {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.debt-table th[b-76nr2o89ma] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.debt-table tr:nth-child(even)[b-76nr2o89ma] {
+    background-color: #f2f2f2;
+}
+
+.debt-table tr:hover[b-76nr2o89ma] {
+    background-color: #ddd;
+}
+
+/* Amount Styling */
+.amount[b-76nr2o89ma] {
+    font-weight: bold;
+    color: #e44d26;
+}
+
+/* Clear Button */
+.clear-btn[b-76nr2o89ma] {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.clear-btn:hover[b-76nr2o89ma] {
+    background-color: #cc0000;
+}
+
+/* No Debts Message */
+.no-debts[b-76nr2o89ma] {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 15px;
+}
+
+/* Modal Styles */
+.modal-overlay[b-76nr2o89ma] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content[b-76nr2o89ma] {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Smaller modal */
+    max-width: 90%;
+}
+
+.modal-content h2[b-76nr2o89ma] {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.modal-content p[b-76nr2o89ma] {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* Close Button */
+.close-btn[b-76nr2o89ma] {
+    margin-top: 10px;
+    padding: 6px 12px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.close-btn:hover[b-76nr2o89ma] {
+    background: #45a049;
+}

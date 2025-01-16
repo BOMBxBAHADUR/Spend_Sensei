@@ -1,0 +1,93 @@
+@page "/debtmanagement"
+@inject Spend_Sensei.Services.TransactionService TransactionService
+@using Spend_Sensei.Models
+
+<h1 class="page-title">Debt Management</h1>
+
+<!-- Pending Debts Section -->
+<div class="debt-section">
+    <h2>Pending Debts</h2>
+    
+    <table class="debt-table">
+        <thead>
+            <tr>
+                <th>Source</th>
+                <th>Amount ($)</th>
+                <th>Due Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (pendingDebts.Any())
+            {
+                @foreach (var debt in pendingDebts)
+                {
+                    <tr>
+                        <td>@debt.Tags</td>
+                        <td class="amount">@debt.Amount$</td>
+                        <td>@debt.Date.ToShortDateString()</td>
+                        <td>
+                            <button class="clear-btn" @onclick="() => AttemptClearDebt(debt)">Clear</button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="no-debts">No pending debts.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Popup Modal for Insufficient Balance -->
+@if (ShowInsufficientBalancePopup)
+{
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <h2>⚠ Insufficient Balance</h2>
+            <p>You don't have enough balance to clear this debt.</p>
+            <button class="close-btn" @onclick="ClosePopup">OK</button>
+        </div>
+    </div>
+}
+
+
+@code {
+    private List<Transaction> pendingDebts => TransactionService.GetPendingDebts();
+    private bool ShowInsufficientBalancePopup = false;
+
+    private void AttemptClearDebt(Transaction debt)
+    {
+        decimal availableBalance = TransactionService.GetBalance();
+
+        if (availableBalance >= debt.Amount)
+        {
+            ClearDebt(debt);
+        }
+        else
+        {
+            ShowInsufficientBalancePopup = true; // Show popup instead of console log
+        }
+    }
+
+    private void ClearDebt(Transaction debt)
+    {
+        try
+        {
+            TransactionService.ClearDebt(debt);
+            StateHasChanged(); // Refresh UI after clearing
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    private void ClosePopup()
+    {
+        ShowInsufficientBalancePopup = false;
+    }
+}

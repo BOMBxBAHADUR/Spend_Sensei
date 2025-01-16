@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/Spend_Sensei.props" />
+</Project>

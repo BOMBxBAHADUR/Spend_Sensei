@@ -1,0 +1,140 @@
+@page "/dashboard"
+@inject Spend_Sensei.Services.TransactionService TransactionService
+@using Spend_Sensei.Models
+
+<h1>Dashboard</h1>
+
+<!-- Balance Summary Cards -->
+<div class="dashboard-cards">
+    <div class="card inflow">
+        <h3>Total Inflows</h3>
+        <p>@TotalInflows$</p>
+    </div>
+    <div class="card outflow">
+        <h3>Total Outflows</h3>
+        <p>@TotalOutflows$</p>
+    </div>
+    <div class="card debt">
+        <h3>Total Debts</h3>
+        <p>@TotalDebts$</p>
+    </div>
+    <div class="card current-debt">
+        <h3>Current Debt</h3>
+        <p>@CurrentDebt$</p>
+    </div>
+    <div class="card cleared-debt">
+        <h3>Total Cleared Debt</h3>
+        <p>@TotalClearedDebt$</p>
+    </div>
+    <div class="card balance">
+        <h3>Available Balance</h3>
+        <p>@AvailableBalance$</p>
+    </div>
+</div>
+
+<!-- Reset Button -->
+<button @onclick="ResetData" class="btn btn-danger reset-button">Reset Data</button>
+
+<!-- Dropdown for Transaction Type Selection -->
+<div class="dropdown-container">
+    <label for="transactionType">Select Transaction Type:</label>
+    <select @bind="SelectedTransactionType" class="form-control">
+        <option value="All">All</option>
+        <option value="Inflow">Inflows</option>
+        <option value="Outflow">Outflows</option>
+        <option value="Debt">Debts</option>
+    </select>
+</div>
+
+<!-- Dropdown for Highest and Lowest Transactions -->
+<div class="dropdown-container">
+    <label for="transactionCategory">Select Category:</label>
+    <select @bind="SelectedTransactionCategory" class="form-control">
+        <option value="Highest">Highest Transactions</option>
+        <option value="Lowest">Lowest Transactions</option>
+    </select>
+</div>
+
+<!-- Dropdown for Transaction Count -->
+<div class="dropdown-container">
+    <label for="transactionCount">Select Number of Transactions:</label>
+    <select @bind="SelectedTransactionCount" class="form-control">
+        <option value="5">Top 5</option>
+        <option value="10">Top 10</option>
+        <option value="15">Top 15</option>
+    </select>
+</div>
+
+<!-- Transactions Table -->
+<div class="transaction-summaries">
+    <div class="summary-section">
+        <h2>@(SelectedTransactionCategory == "Highest" ? "Top Transactions" : "Lowest Transactions")</h2>
+        <table class="transactions-table">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>Tags</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var transaction in FilteredTransactions)
+            {
+            <tr>
+                <td>@transaction.Date.ToShortDateString()</td>
+                <td>@transaction.Amount$</td>
+                <td>@transaction.Type</td>
+                <td>@transaction.Tags</td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+private decimal TotalInflows => TransactionService.GetTotalByType("Inflow");
+private decimal TotalOutflows => TransactionService.GetTotalByType("Outflow");
+private decimal TotalDebts => TransactionService.GetTotalByType("Debt");
+private decimal AvailableBalance => TransactionService.GetBalance();
+private decimal CurrentDebt => TransactionService.GetPendingDebtTotal();
+private decimal TotalClearedDebt => TransactionService.GetClearedDebtTotal();
+
+private string SelectedTransactionType { get; set; } = "All";
+private string SelectedTransactionCategory { get; set; } = "Highest";
+private int SelectedTransactionCount { get; set; } = 5;
+
+// Fetch highest transactions
+private List<Transaction> AllHighestTransactions =>
+SelectedTransactionType == "All" ?
+TransactionService.GetHighestTransactions("Inflow", SelectedTransactionCount)
+.Concat(TransactionService.GetHighestTransactions("Outflow", SelectedTransactionCount))
+.Concat(TransactionService.GetHighestTransactions("Debt", SelectedTransactionCount))
+.OrderByDescending(t => t.Amount)
+.Take(SelectedTransactionCount)
+.ToList()
+: TransactionService.GetHighestTransactions(SelectedTransactionType, SelectedTransactionCount);
+
+// Fetch lowest transactions
+private List<Transaction> AllLowestTransactions =>
+SelectedTransactionType == "All" ?
+TransactionService.GetLowestTransactions("Inflow", SelectedTransactionCount)
+.Concat(TransactionService.GetLowestTransactions("Outflow", SelectedTransactionCount))
+.Concat(TransactionService.GetLowestTransactions("Debt", SelectedTransactionCount))
+.OrderBy(t => t.Amount)
+.Take(SelectedTransactionCount)
+.ToList()
+: TransactionService.GetLowestTransactions(SelectedTransactionType, SelectedTransactionCount);
+
+// Filter transactions based on dropdown selections
+private List<Transaction> FilteredTransactions =>
+SelectedTransactionCategory == "Highest" ?
+AllHighestTransactions : AllLowestTransactions;
+
+private void ResetData()
+{
+TransactionService.ResetTransactions();
+StateHasChanged(); // Refresh the UI after reset
+}
+}
