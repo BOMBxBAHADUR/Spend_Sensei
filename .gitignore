@@ -1,0 +1,18 @@
+# Ignore Rider/JetBrains project files
+.idea/
+.idea.Spend_Sensei/
+
+# Ignore build output directories
+bin/
+obj/
+
+# Ignore user-specific settings and generated files
+*.user
+*.suo
+*.cache
+*.log
+*.lock
+
+# Ignore macOS system files
+.DS_Store
+
