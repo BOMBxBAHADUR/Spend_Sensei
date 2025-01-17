@@ -54,11 +54,6 @@
     <button type="button" @onclick="ValidateAndAddTransaction" class="btn btn-primary">Add Transaction</button>
 </form>
 
-@if (!string.IsNullOrEmpty(successMessage))
-{
-    <div class="alert alert-success">@successMessage</div>
-}
-
 <!-- Popup Modal for Insufficient Balance -->
 @if (ShowInsufficientBalancePopup)
 {
@@ -71,19 +66,30 @@
     </div>
 }
 
+<!-- Popup Modal for Success Message -->
+@if (ShowSuccessPopup)
+{
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <h2>✅ Success</h2>
+            <p>Transaction added successfully!</p>
+            <button class="close-btn" @onclick="CloseSuccessPopup">OK</button>
+        </div>
+    </div>
+}
+
 @code {
     private Transaction newTransaction = new Transaction { Date = DateTime.Now };
-    private string successMessage = "";
     private string errorMessageType = "";
     private string errorMessageAmount = "";
     private string selectedTag = "Food"; // Default to the first predefined tag
     private string customTag = "";
 
-    private bool ShowInsufficientBalancePopup = false; // Flag for modal visibility
+    private bool ShowInsufficientBalancePopup = false; // Flag for insufficient balance modal
+    private bool ShowSuccessPopup = false; // Flag for success modal
 
     private void ValidateAndAddTransaction()
     {
-        successMessage = "";
         errorMessageType = "";
         errorMessageAmount = "";
 
@@ -118,15 +124,22 @@
         // Add the transaction
         TransactionService.AddTransaction(newTransaction);
 
+        // Show success popup
+        ShowSuccessPopup = true;
+
         // Reset the form
         newTransaction = new Transaction { Date = DateTime.Now };
         selectedTag = "Food";
         customTag = "";
-        successMessage = "Transaction added successfully!";
     }
 
     private void ClosePopup()
     {
         ShowInsufficientBalancePopup = false;
+    }
+
+    private void CloseSuccessPopup()
+    {
+        ShowSuccessPopup = false;
     }
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Spend_Sensei")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+9ac9e3496d07e5b05d638fdc9172ce058019a672")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+f23f945dcd5ba0ce3d84074d13984e07f876cc70")]
 [assembly: System.Reflection.AssemblyProductAttribute("Spend_Sensei")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Spend_Sensei")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
